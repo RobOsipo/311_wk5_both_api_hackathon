@@ -1,0 +1,26 @@
+{
+  "name": "311_wk5_both_api_hackathon",
+  "version": "1.0.0",
+  "description": "group restful api",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon /index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AustinCodingAcademy/311_wk5_both_api_hackathon.git"
+  },
+  "author": "Robert-Seth-Bryan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AustinCodingAcademy/311_wk5_both_api_hackathon/issues"
+  },
+  "homepage": "https://github.com/AustinCodingAcademy/311_wk5_both_api_hackathon#readme",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "express": "^4.17.3",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.15"
+  }
+}
