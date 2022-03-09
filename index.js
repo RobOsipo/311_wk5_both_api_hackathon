@@ -4,14 +4,24 @@ const employeeRoutes = require('./routes/employees')
 const app = express()
 const PORT = 4001
 
-// app.get('/', (req, res) => {
-//     res.send('Welcome To Our API')
-// })
 
+// Our basic middleware
 app.use(bodyParser.json())
-
+// Our Controller/Routes middleware
 app.use('/employees', employeeRoutes)
 
+
+// basic API home page
+app.get('/', (req, res) => {
+    res.send('Welcome To Our API!')
+})
+
+// If we access the wrong endpoint throw error
+app.all("*", (req, res) => {
+    res.status(404).send('<h1>That End-Point/Route does not exist</h1>')
+})
+
+// Our PORT to listen on
 app.listen(PORT, (req, res) => {
     console.log(`listening on port ${PORT}`)
 })
