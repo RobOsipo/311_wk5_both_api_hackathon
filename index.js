@@ -6,7 +6,6 @@ require('dotenv').config();
 const app = express()
 const PORT = 4001
 
-
 // Our basic middleware
 app.use(bodyParser.json())
 // Our Controller/Routes middleware
@@ -16,6 +15,20 @@ app.use('/employees', employeeRoutes)
 // basic API home page
 app.get('/', (req, res) => {
     res.send('Welcome To Our API!')
+})
+
+
+app.get('/users', (req, res) => {
+ console.log('inside get /users route');
+ const sql = 'SELECT * FROM employees'
+ connection.query(sql, (err, rows) => {
+     if (err) {
+         console.log(err)
+         res.status(404).send('A problem occured' + err.sqlMessage)
+     } else {
+         res.json(rows)
+     }
+ })
 })
 
 // If we access the wrong endpoint throw error
