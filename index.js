@@ -1,6 +1,8 @@
 const express = require('express')
 const bodyParser = require("body-parser");
 const employeeRoutes = require('./routes/employees')
+const connection = require('./connection.js');
+require('dotenv').config();
 const app = express()
 const PORT = 4001
 
