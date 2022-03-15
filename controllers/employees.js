@@ -32,9 +32,40 @@ const getEmployeeByFirstName = (req,res) => {
  })
 }
 
+const getEmployeeAndSalaries = (req,res) => {
+ let sql = "SELECT * FROM employees INNER JOIN salaries ON employees.emp_no = salaries.emp_no"
+ connection.query(sql, (err, rows) => {
+  if (err) return handleSQLError(res, err)
+  return res.json(rows);
+ })
+}
+
+const getEmployeeSalaryById = (req,res) => {
+  let sql = "SELECT * FROM employees INNER JOIN salaries ON employees.emp_no = salaries.emp_no WHERE employees.emp_no = ?"
+  sql = mysql.format(sql, [req.params.id])
+  connection.query(sql, (err, rows) => {
+    if (err) return handleSQLError(res, err)
+    return res.json(rows);
+  })
+ }
+
+ const getEmployeeDepartmentById = (req,res) => {
+  let sql = "SELECT * FROM employees INNER JOIN dept_emp ON employees.emp_no = dept_emp.emp_no WHERE employees.emp_no = ?"
+  sql = mysql.format(sql, [req.params.id])
+  connection.query(sql, (err, rows) => {
+    if (err) return handleSQLError(res, err)
+    return res.json(rows);
+  })
+ }
+
+
+
 
 module.exports = {
     getEmployee,
     getEmployeeById,
-    getEmployeeByFirstName
+    getEmployeeByFirstName,
+    getEmployeeAndSalaries,
+    getEmployeeSalaryById,
+    getEmployeeDepartmentById
 }
